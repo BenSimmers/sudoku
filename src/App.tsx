@@ -1,19 +1,11 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { fetchSudoku } from "./data";
-const API_URL: string = "https://sudoku-api.vercel.app/api/dosuku";
-const LOCAL_STORAGE_KEY = "sudokuBoard";
+import { Sudoku } from "./types";
 
-type Sudoku = {
-  newboard: {
-    grids: {
-      value: number[][];
-      solution: number[][];
-      difficulty: string;
-    }[];
-  };
-};
-
+const API_URL: string = import.meta.env.VITE_API_URL as string;
+const LOCAL_STORAGE_KEY: string = import.meta.env
+  .VITE_LOCAL_STORAGE_KEY as string;
 
 function App() {
   const [sudoku, setSudoku] = useState<Sudoku>({} as Sudoku);
